@@ -13,6 +13,10 @@ $(document).ready(function(){
     $("#player2").text(player2Name);
   });
 
+  $(".well").click(function(event){
+    $("p, ul").toggle();
+  });
+
 
 
 

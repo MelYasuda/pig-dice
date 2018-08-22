@@ -24,7 +24,7 @@ Exercise to apply Javascript skills learned in weeks 1-4 of Epicodus' _Intro to 
 | Display user starting score 0 |  None  |  0  |
 | When the Start button clicked, prompt user names and display the names in the page      | Mel, Victoria  | Mel, Victoria |
 | When the Roll button clicked, pick a random number out of 6    |  click roll     |  5  |
-|  |      |    |
+| How to play instructions will toggle hide | Click     | Show or hide   |
 
 ## Setup/Installation Requirements
 1. Clone the following repository: https://github.com/VicOhPNW/pig-dice.git
