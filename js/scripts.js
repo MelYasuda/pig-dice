@@ -14,6 +14,7 @@ $(document).ready(function(){
     var player2Name = prompt("Please enter player 2 name.")
     $("#player1").text(player1Name);
     $("#player2").text(player2Name);
+    $("#player1").toggleClass("active-player");
   });
 
   // hide/show the instructions
@@ -28,7 +29,11 @@ $(document).ready(function(){
     $("#random-number").text(randomNumber);
   });
 
-
+  // toggle highlight between each player when hold clicked
+  $("#hold").click(function(event){
+    $("#player1").toggleClass("active-player");
+    $("#player2").toggleClass("active-player");
+  });
 
 
 
