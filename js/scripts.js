@@ -10,12 +10,12 @@ function Player(playerCounter, rollScore, turnScore, totalScore) {
 // user interface
 $(document).ready(function(){
 
-
   var playerCounter = 0;
   var player1 = new Player(playerCounter);
   playerCounter = 1;
   var player2 = new Player(playerCounter);
 console.log(player2);
+  var playerTurn = 0;
 
   // set player starting score
   var player1Total = 0;
@@ -47,31 +47,78 @@ console.log(player2);
     randomNumber = Math.floor((Math.random() * 6) + 1);
     // console.log(randomNumber);
     $("#random-number").text(randomNumber);
-    $("#track-player1").append("<li>"+randomNumber+"</li>");
     // $("#track-player2").append("<li>"+randomNumber+"</li>");
-    player1.rollScore = randomNumber;
+    if(playerTurn === 0) {
+      player1.rollScore = randomNumber;
+      $("#track-player1").append("<li>"+randomNumber+"</li>");
+      if(player1.rollScore === 1){
+        player1.turnScore = 0;
+        playerTurn = 1;
+      } else {
+        player1.turnScore += randomNumber;
+      }
+      $("#turn-score-player1").text(player1.turnScore);
+      console.log(player1);
+    } else if (playerTurn === 1) {
+        player2.rollScore = randomNumber;
+        $("#track-player2").append("<li>"+randomNumber+"</li>");
+        if(player2.rollScore === 1){
+          player2.turnScore = 0;
+          playerTurn = 0;
+        } else {
+          player2.turnScore += randomNumber;
+        }
+        $("#turn-score-player2").text(player2.turnScore);
+        console.log(player2);
+      }
+    });
 
-
-    if(player1.rollScore === 1){
-      player1.turnScore = 0;
-    } else {
-      player1.turnScore += randomNumber;
-    }
-    $("#turn-score-player1").text(player1.turnScore);
-    console.log(player1);
-  });
 
 
   // toggle highlight between each player when hold clicked
   $("#hold").click(function(event){
     $("#player1").toggleClass("active-player");
     $("#player2").toggleClass("active-player");
-    player1.totalScore += player1.turnScore;
-    player1.turnScore = 0;
-    player1.rollScore = 0;
-    $("#player1-score").text(player1.totalScore);
-    $("#track-player1").text("");
-    console.log(player1);
+
+    // function turnCounter(whoseturn) {
+    //   if (whoseturn === 0) {
+    //     player1.totalScore += player1.turnScore;
+    //     player1.turnScore = 0;
+    //     player1.rollScore = 0;
+    //     $("#player1-score").text(player1.totalScore);
+    //     $("#track-player1").text("");
+    //     console.log(player1);
+    //   } else if (whoseturn === 1) {
+    //     player2.totalScore += player2.turnScore;
+    //     player2.turnScore = 0;
+    //     player2.rollScore = 0;
+    //     console.log(player2)
+    //   }
+    // }
+
+    if (playerTurn === 0) {
+      player1.totalScore += player1.turnScore;
+      player1.turnScore = 0;
+      player1.rollScore = 0;
+      $("#player1-score").text(player1.totalScore);
+      $("#track-player1").text("");
+      playerTurn = 1;
+    } else if (playerTurn === 1) {
+      player2.totalScore += player2.turnScore;
+      player2.turnScore = 0;
+      player2.rollScore = 0;
+      playerTurn = 0;
+
+    }
+
+
+
+    // player1.totalScore += player1.turnScore;
+    // player1.turnScore = 0;
+    // player1.rollScore = 0;
+    // $("#player1-score").text(player1.totalScore);
+    // $("#track-player1").text("");
+    // console.log(player1);
 
 
     // if()
