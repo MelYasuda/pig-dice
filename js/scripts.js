@@ -7,6 +7,17 @@ function Player(playerCounter, rollScore, turnScore, totalScore) {
   this.totalScore = 0;
 }
 
+Player.prototype.win = function() {
+  if(this.totalScore >= 10) {
+    alert(this.playerCounter + "won!");
+    $("#player1-score").text("");
+    $("#player2-score").text("");
+    $("#turn-score-player1").text("");
+    $("#turn-score-player2").text("");
+  }
+}
+
+
 // user interface
 $(document).ready(function(){
 
@@ -53,6 +64,7 @@ console.log(player2);
       $("#track-player1").append("<li>"+randomNumber+"</li>");
       if(player1.rollScore === 1){
         player1.turnScore = 0;
+        $("#track-player1").text("");
         playerTurn = 1;
       } else {
         player1.turnScore += randomNumber;
@@ -64,6 +76,7 @@ console.log(player2);
         $("#track-player2").append("<li>"+randomNumber+"</li>");
         if(player2.rollScore === 1){
           player2.turnScore = 0;
+          $("#track-player2").text("");
           playerTurn = 0;
         } else {
           player2.turnScore += randomNumber;
@@ -102,17 +115,21 @@ console.log(player2);
       player1.rollScore = 0;
       $("#player1-score").text(player1.totalScore);
       $("#track-player1").text("");
+
       playerTurn = 1;
     } else if (playerTurn === 1) {
       player2.totalScore += player2.turnScore;
       player2.turnScore = 0;
       player2.rollScore = 0;
+      $("#player2-score").text(player2.totalScore);
+      $("#track-player2").text("");
       playerTurn = 0;
 
     }
 
-
-
+    player1.win();
+    player2.win();
+    // player2.win();
     // player1.totalScore += player1.turnScore;
     // player1.turnScore = 0;
     // player1.rollScore = 0;
