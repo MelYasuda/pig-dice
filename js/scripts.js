@@ -8,7 +8,7 @@ function Player(playerCounter, rollScore, turnScore, totalScore) {
 }
 
 Player.prototype.win = function() {
-  if(this.totalScore >= 10) {
+  if(this.totalScore >= 100) {
     alert(this.playerCounter + "won!");
     $("#player1-score").text("");
     $("#player2-score").text("");
@@ -20,7 +20,6 @@ Player.prototype.win = function() {
 
 // user interface
 $(document).ready(function(){
-
   var playerCounter = 0;
   var player1 = new Player(playerCounter);
   playerCounter = 1;
@@ -32,20 +31,23 @@ console.log(player2);
   var player1Total = 0;
   var player2Total = 0;
 
-  // create Player objects with player names
-  var player1Name = prompt("Please enter player 1 name.");
-  var player2Name = prompt("Please enter player 2 name.");
+
 
   // disply player score number
   $("#player1-score").append(player1Total);
   $("#player2-score").append(player2Total);
 
   // start button, display player name input
-  $("button#start").click(function(event){
+  $("#start").submit(function(event){
     event.preventDefault();
+    // create Player objects with player names
+    var player1Name = $("input#player1name").val();
+    var player2Name = $("input#player2name").val();
     $("#player1").text(player1Name);
     $("#player2").text(player2Name);
     $("#player1").toggleClass("active-player");
+    $("form#start").hide();
+    $("#gamedisplay").show();
   });
 
   // hide/show the instructions

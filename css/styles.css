@@ -1,3 +1,32 @@
 .active-player {
   background-color: yellow;
 }
+#random-number {
+  font-size: 50px;
+}
+
+#hold {
+  margin-left: 100px;
+}
+
+#gamedisplay {
+  display: none;
+}
+
+.display-turns {
+  float: right;
+}
+
+h3 {
+  text-align: center;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+.well {
+  position: fixed;
+  bottom: 0;
+  width: 98%;
+}

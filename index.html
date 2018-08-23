@@ -15,18 +15,36 @@
       </div>
 <!--Start of player and Dice sections -->
       <div class="row">
+        <form id="start">
+          <div class="form-group">
+            <label for="player1">Player 1</label>
+            <input type="text" id="player1name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="player2">Player 2</label>
+            <input type="text" id="player2name" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-success">Start!</button>
+        </form>
+
+        <div id="gamedisplay">
         <div class="col-md-3">
           <h3><span id="player1">Player 1</span>: <span id="player1-score"></span></h3>
-          <ul>
-            Rolls <span id=track-player1></span>
-          </ul>
-          <div>
-            Turns <span id="turn-score-player1"></span>
+          <div class="row">
+            <div class="col-md-6">
+              <ul>
+                Dice Roll <span id=track-player1></span>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <div class="display-turns">
+                Turns <span id="turn-score-player1"></span>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="col-md-6">
-          <button type="button" class="btn btn-success" id="start">Start!</button>
           <button type="button" class="btn btn-info" id="roll">Roll!</button>
           <span id ="random-number"> </span>
           <button type="button" class="btn btn-warning" id="hold">Hold!</button>
@@ -34,14 +52,19 @@
 
         <div class="col-md-3">
           <h3><span id="player2">Player 2</span>: <span id="player2-score"></span></h3>
+          <div class="col-md-6">
           <ul>
             Rolls<span id=track-player2></span>
           </ul>
-          <div>
-            Turns <span id="turn-score-player2"></span>
+          </div>
+          <div class="col-md-6">
+            <div class="display-turns">
+              Turns <span id="turn-score-player2"></span>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 <!--End of player and Dice sections -->
 
 
