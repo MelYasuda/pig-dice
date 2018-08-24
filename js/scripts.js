@@ -1,7 +1,7 @@
 // business logic
 
-function Player(playerCounter, rollScore, turnScore, totalScore) {
-  this.playerCounter = playerCounter;
+function Player(rollScore, turnScore, totalScore) {
+  // this.playerCounter = playerCounter;
   this.rollScore = 0;
   this.turnScore = 0;
   this.totalScore = 0;
@@ -20,10 +20,10 @@ Player.prototype.win = function() {
 
 // user interface
 $(document).ready(function(){
-  var playerCounter = 0;
-  var player1 = new Player(playerCounter);
-  playerCounter = 1;
-  var player2 = new Player(playerCounter);
+  // var playerCounter = 0;
+  var player1 = new Player();
+  // playerCounter = 1;
+  var player2 = new Player();
 console.log(player2);
   var playerTurn = 0;
 
